@@ -46,8 +46,6 @@ for n in 1 2 3 8; do
 	install *.$n $RPM_BUILD_ROOT%{_mandir}/man$n
 done
 
-gzip -9nf debian/copyright
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 

@@ -34,7 +34,7 @@ zestaw bardzo u¿ytecznych narzêdzi niezamieszczonych z jaki¶ wa¿nych
 powodów w standardowych wersjach Unix-a. S± tutaj zawarte takie
 komendy jak lart, sysadmin, luser, bosskill i inne. Autorzy zalecaj±
 instalacjê tych manuali na ka¿dym systemie. Jest tutaj tak¿e kilka
-innych zabawnych stron manuala zebranych przez Paw³a Wiecka dla
+innych zabawnych stron manuala zebranych przez Paw³a Wiêcka dla
 dystrybucji Debian.
 
 %prep

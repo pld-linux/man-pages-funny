@@ -2,13 +2,15 @@ Summary:	alt.sysadmin.recovery(and others) manual pages
 Summary(pl):	Strony man z grupy alt.sysadmin.recovery(i nie tylko)
 Name:		man-pages-funny
 Version:	1.1
-Release:	3
+Release:	4
 License:	distributable
 Group:		Documentation
 Source0:	funny-manpages_%{version}.orig.tar.gz
 # Source0-md5:	7b9e70e7bab57110f381204a8e7eb347
 Source1:	ftp://ftp.winternet.com/users/asr.pages.tar
 # Source1-md5:	5d7596563fc8ee35b13c654a977216aa
+Source2:	%{name}-google-en.7
+Source3:	%{name}-google-pl.7
 Patch0:		funny-manpages-DEBIAN.patch
 Patch1:		asr-manpages-DEBIAN.patch
 BuildArch:	noarch
@@ -41,12 +43,14 @@ dystrybucji Debian.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_mandir}/man{1,2,3,8}
+install -d $RPM_BUILD_ROOT%{_mandir}{/man{1,2,3,7,8},/pl/man7}
 
 mv lart.1{m,}
 for n in 1 2 3 8; do
 	install *.$n $RPM_BUILD_ROOT%{_mandir}/man$n
 done
+install %{SOURCE2} $RPM_BUILD_ROOT%{_mandir}/man7/google.7
+install %{SOURCE3} $RPM_BUILD_ROOT%{_mandir}/pl/man7/google.7
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -55,3 +59,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc debian/copyright
 %{_mandir}/man*/*
+%lang(pl) %{_mandir}/pl/man?/*

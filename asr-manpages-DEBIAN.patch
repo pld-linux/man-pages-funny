@@ -1,0 +1,312 @@
+--- asr-manpages-1.2.orig/people.2
++++ asr-manpages-1.2/people.2
+@@ -27,7 +27,7 @@
+   int is_amoron;
+   int is_aluser;
+   int has_aclue;
+-  pid_t prgp_leader;
++  pid_t pgrp_leader;
+ };
+ .fi
+ .SH RETURN VALUES
+@@ -57,7 +57,7 @@
+ is system dependent, but is usually about 3.
+ .SH EXAMPLE
+ .nf
+-#include <sys/pople.h>
++#include <sys/people.h>
+ #include <asr.h>
+ #include <signal.h>
+ 
+@@ -71,7 +71,7 @@
+   if (rv!=-1) {
+     for (c=0;c<rv;c++)
+       if ((ttys[c].is_amoron)||(ttys[c].is_aluser)) {
+-	kill(-(ttys[c].pgrp_leader),SIGKILL);
++        kill(-(ttys[c].pgrp_leader),SIGKILL);
+       }
+   } else {
+     ; /* Handle errors in a graceful way... */
+--- asr-manpages-1.2.orig/slave.1
++++ asr-manpages-1.2/slave.1
+@@ -18,7 +18,7 @@
+ .SH THE OPTION
+ .TP
+ \-\fIf\fP
+-Send a rapid succession of \fISIHUP\fPs to \fIslave\fP, mainly used
++Send a rapid succession of \fISIGHUP\fPs to \fIslave\fP, mainly used
+ when one needs to blow off a little steam.
+ .SH THE COMMANDS
+ Almost any phrase in pidgin English is acceptable input to the
+--- asr-manpages-1.2.orig/sysadmin.1
++++ asr-manpages-1.2/sysadmin.1
+@@ -1,5 +1,5 @@
+-\." Written by Abby Franquement-Guillory (abbyfg@tezcat.com).
+-\." Convered to troff by Eric Pederson (eric@winternet.com).
++.\" Written by Abby Franquement-Guillory (abbyfg@tezcat.com).
++.\" Convered to troff by Eric Pederson (eric@winternet.com).
+ .TH SYSADMIN 1 "25 September 1995"
+ .SH NAME
+ sysadmin \- responsible for everything imaginable that may
+--- asr-manpages-1.2.orig/debian/changelog
++++ asr-manpages-1.2/debian/changelog
+@@ -0,0 +1,64 @@
++asr-manpages (1.2-3) unstable; urgency=low
++
++  * Fixed a couple of typos (fixes bugs #42461, #34173)
++  * Symlinked n.1 to undocumented.7 (fixes #36617)
++  * Updated to standards version 3.0.1
++
++ -- Pawel Wiecek <coven@debian.org>  Tue, 26 Oct 1999 21:00:37 +0200
++
++asr-manpages (1.2-2) unstable; urgency=low
++
++  * Updated Standards-Version
++
++ -- Pawel Wiecek <coven@debian.org>  Sat, 31 Oct 1998 22:53:44 +0100
++
++asr-manpages (1.2-1) unstable; urgency=low
++
++  * Version number changed 'cause I messed .orig somehow
++
++ -- Pawel Wiecek <coven@pwr.wroc.pl>  Thu, 15 Jan 1998 00:00:10 +0100
++
++asr-manpages (1.1-5) unstable; urgency=low
++
++  * Uubp(1) moved to funny-manpages since it's not present in canonical
++    asr-manpages distribution.
++
++ -- Pawel Wiecek <coven@pwr.wroc.pl>  Sun, 11 Jan 1998 19:39:51 +0100
++
++asr-manpages (1.1-4) unstable; urgency=low
++
++  * Added Suggests: funny-manpages to control file to encourage people to
++    install non-a.s.r pages too
++
++ -- Pawel Wiecek <coven@pwr.wroc.pl>  Wed, 10 Dec 1997 01:37:38 +0100
++
++asr-manpages (1.1-3) unstable; urgency=low
++
++  * Fixed a typo in the description
++
++ -- Pawel Wiecek <coven@pwr.wroc.pl>  Sat, 16 Aug 1997 01:28:33 +0200
++
++asr-manpages (1.1-2) unstable; urgency=low
++
++  * Corrected copyright file (copyright info for c(1) page was missing)
++
++ -- Pawel Wiecek <coven@pwr.wroc.pl>  Mon, 28 Jul 1997 23:53:48 +0200
++
++asr-manpages (1.1-1) unstable; urgency=low
++
++  * New man page for c(1) added
++  * Added man page for uubp(1) which was missing from distribution
++    (required some reverse engeneering)
++
++ -- Pawel Wiecek <coven@pwr.wroc.pl>  Mon, 28 Jul 1997 00:56:58 +0200
++
++asr-manpages (1.0-1) unstable; urgency=low
++
++  * Initial Release.
++  * Added symlinks to axe, cutter and chainsaw
++
++ -- Pawel Wiecek <coven@pwr.wroc.pl>  Sun, 1 Jun 1997 23:13:56 +0200
++
++Local variables:
++mode: debian-changelog
++End:
+--- asr-manpages-1.2.orig/debian/control
++++ asr-manpages-1.2/debian/control
+@@ -0,0 +1,18 @@
++Source: asr-manpages
++Section: doc
++Priority: optional
++Maintainer: Pawel Wiecek <coven@debian.org>
++Standards-Version: 3.0.1
++
++Package: asr-manpages
++Architecture: all
++Suggests: funny-manpages (>=1.1-3)
++Description: alt.sysadmin.recovery manual pages
++ A set of humorous manual pages developed on
++ alt.sysadmin.recovery (don't treat them seriously!).
++ They document a set of really useful tools that for some
++ strange reason are not included in any implementation of
++ Unix. This includes such famous commands as lart, sysadmin,
++ luser, bosskill and others.
++ The authors recommend these man pages should be installed
++ on every system.
+--- asr-manpages-1.2.orig/debian/copyright
++++ asr-manpages-1.2/debian/copyright
+@@ -0,0 +1,27 @@
++This package was debianized by Pawel Wiecek coven@pwr.wroc.pl on
++Sun, 1 Jun 1997 23:13:56 +0200.
++
++It was downloaded from ftp://ftp.winternet.com/users/eric/asr.pages.tar
++
++Uubp page is missing from distribution - it was reverse-engeneered from
++HTML version found on http://www.bofh.org.pl/man/.
++
++The authors of the pages are:
++ - c - Nick Williams <nickw@iname.com>
++ - lart - Tim Bandy <timn8r@risk.cs.umn.edu>
++ - slave - Ingvar Mattsson
++ - sysadmin - Abby Franquemont-Guillory <abbyfg@tezcat.com>
++ - think - John Guthrie <guthrie@math.upenn.edu>
++ - whack - Eric L. Pederson <eric@winternet.com>
++ - people - Ingvar Mattsson
++ - chastise - Ingvar Mattsson
++ - normality - Ingvar Mattsson
++ - bosskill - Eric L. Pederson <eric@winternet.com>
++ - ctluser - Simon Burr <simes@tcp.co.uk>
++ - guru - unknown author <user@foo.com>
++ - knife - Kurt Hockenbury <kurt@something.com>
++ - luser - Eric L. Pederson <eric@winternet.com>
++ - nuke - Eric S. Raymond <esr@thyrus.com>
++ - pmsd - Eric L. Pederson <eric@winternet.com>
++
++To the best of my knowledge they are all completely free.
+--- asr-manpages-1.2.orig/debian/rules
++++ asr-manpages-1.2/debian/rules
+@@ -0,0 +1,61 @@
++#!/usr/bin/make -f
++# Sample debian.rules file - for GNU Hello (1.3).
++# Copyright 1994,1995 by Ian Jackson.
++# I hereby give you perpetual unlimited permission to copy,
++# modify and relicense this file, provided that you do not remove
++# my name from the file itself.  (I assert my moral right of
++# paternity under the Copyright, Designs and Patents Act 1988.)
++# This file may have to be extensively modified
++#
++# Modified to be a prototype for debmake by Christoph Lameter <clameter@debian.org>
++
++package=asr-manpages
++
++build:
++	$(checkdir)
++	touch build
++
++clean:
++	$(checkdir)
++	-rm -f build
++	-rm `find . -name "*~"`
++	-rm -rf debian/tmp debian/files* core
++
++binary-indep:	checkroot build
++	$(checkdir)
++	-rm -rf debian/tmp
++# Must have debmake installed for this to work. Otherwise please copy
++# /usr/bin/debstd into the debian directory and change debstd to debian/debstd
++	debstd $(package) CHANGES INSTALL README* TODO
++# Add symlinks...
++	ln -fs knife.8.gz debian/tmp/usr/share/man/man8/axe.8.gz
++	ln -fs knife.8.gz debian/tmp/usr/share/man/man8/cutter.8.gz
++	ln -fs knife.8.gz debian/tmp/usr/share/man/man8/chainsaw.8.gz
++	ln -s ../man7/undocumented.7.gz debian/tmp/usr/share/man/man1/n.1.gz
++	dpkg-gencontrol
++	chown -R root.root debian/tmp
++	chmod -R go=rX debian/tmp
++	dpkg --build debian/tmp ..
++
++binary-arch:	checkroot build
++	$(checkdir)
++# There are no architecture-dependent files to be uploaded
++# generated by this package.  If there were any they would be
++# made here.
++
++define checkdir
++	test -f lart.1 -a -f debian/rules
++endef
++
++# Below here is fairly generic really
++
++binary:		binary-indep binary-arch
++
++source diff:
++	@echo >&2 'source and diff are obsolete - use dpkg-source -b'; false
++
++checkroot:
++	$(checkdir)
++	test root = "`whoami`"
++
++.PHONY: binary binary-arch binary-indep clean checkroot
+--- asr-manpages-1.2.orig/lart.1
++++ asr-manpages-1.2/lart.1
+@@ -0,0 +1,77 @@
++.\" @(#)lart.1m 1.0 96/01/23 TDB
++.\" Written by Tim Bandy <bandy@cs.umn.edu> just for kicks.
++.TH lart 1M "01 23 1996"
++.SH NAME
++lart \- Luser Attitude Readjustment Tool \- use a lart to adjust
++lusers' attitudes
++.SH SYNOPSIS
++.B lart
++[
++.BR -use
++.I tool
++] [
++.B -bBfFgklp
++]
++.I <lusername>
++.br
++.SH DESCRIPTION
++.IX  "lart command"  ""  "\fLlart\fP \(em use a tool to adjust attitudes"
++.PP
++.B lart
++adjusts the attitudes of those pesky, clueless people who rely upon
++their admins for everything from picking their mice off of the floor
++to turning on their monitors; namely, the luser(8).  Running
++.B lart
++with the appropriate arguments will cause the specified luser to
++run away screaming in agony.  Alternatively, you can make the luser
++buy you a beer, after killing all of their processes.
++
++.SH OPTIONS
++.TP 15
++.BI \-use " tool"
++Choose your weapon.  If this option is not specified, the enviroment
++variable LART is used.  If neither is set, a default value will be
++used, which is set at compile time
++.TP
++.BI \-b
++Used to increase the size of your lart
++.TP
++.BI \-B
++The BOFH option.  Removes a users files and kills all their processes.
++If used in conjunction with
++.B \-p
++this will also cause syslog to make entries proving that
++.I <lusername>
++was the second gunman behind the grassy knoll
++.TP
++.B \-f
++Only fake luser's attitude readjustment session.  Provided primarily
++for testing purposes.  Mutually exclusive with
++.B \-B
++.TP
++.B \-F
++.B fsck
++.I <lusername>
++ as a raw device.  Note that this option has not been
++tested, as it is rather difficult to find volunteers
++.TP
++.B \-g
++Graphic violence.  Uses
++.B curses
++to monitor
++.I <lusername>
++during the beating.
++.TP
++.B \-k
++Kill.  A rather permanent option, and as such is not highly
++recommended.  Can only be invoked once per
++.I <lusername>
++.TP
++.B \-p
++See
++.B \-B
++
++.SH SEE ALSO
++.BR sysadmin (1),
++.BR guru (8),
++.BR luser (8)

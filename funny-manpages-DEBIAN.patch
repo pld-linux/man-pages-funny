@@ -1,0 +1,315 @@
+--- funny-manpages-1.1.orig/uubp.1
++++ funny-manpages-1.1/uubp.1
+@@ -0,0 +1,38 @@
++.\"
++.TH uubp 1C "Communication Commands"
++.SH NAME
++uubp \- Unix-to-Unix beer protocol
++.SH SYNOPSIS
++.B uubp
++.B [-acefghlqy]
++.I site
++.SH DESCRIPTION
++Uubp allows the user to transfer beer, ale, or other fermented
++grain beverages between network sites. Using TCP/IP
++(telecommunication protocol for imbibing pilsners), uubp
++encodes beer from a local file system into packets suitable for
++FTP (fermentation transfer protocol) delivery at a remote IP
++site.
++
++Example:
++
++% uubp -c"AMBER" -f0.7 -y0 -q2 198.137.240.100
++
++The preceding example sends two six-packs (-q2) of amber ale
++(-c"AMBER") with a fizziness quotient of 70%, brewed using
++yeast of type 0 (saccharomyces cerevisiae) to PI address
++198.137.240.100, which is the IP address of the White House.
++.SH RESTRICTIONS
++Both source and destination sites must be running uubp-daemon.
++In addition, local restriction exist in many areas for the
++transportation alkohol across state lines. The Electronic
++Frontier Foundation is currently involved in litigation to
++ensure the ability to distribute beer through the uubp protocol
++according to the 21st Amendment. To support the SIG of EFF
++devoted to this cause, join the Homebrewers of the Electronic
++Frontier Engaged in Winning Electronic Independence and Zeroing
++Establishment Nonsense (HEFEWEIZEN), or send mail to
++hefeweizen@eff.eff.org. Be sure to include the entire text of
++this manual page.
++.SH NOTES
++Have a homebrew!
+--- funny-manpages-1.1.orig/debian/changelog
++++ funny-manpages-1.1/debian/changelog
+@@ -0,0 +1,32 @@
++funny-manpages (1.1-3) unstable frozen; urgency=low
++
++  * Minor fixes in manpages for sex (fixes bugs #45120)
++  * Changed section for sex from 1 to 6 (fixes #30977, #37897, #45120)
++  * Updated standards version to 3.0.1
++
++ -- Pawel Wiecek <coven@debian.org>  Tue, 26 Oct 1999 21:11:51 +0200
++
++funny-manpages (1.1-2) unstable frozen; urgency=low
++
++  * Changed path in rtfm.1 as suggested by Yann Dirson (fixes bug #25393)
++  * Updated Standards-Version
++
++ -- Pawel Wiecek <coven@debian.org>  Sat, 31 Oct 1998 22:13:20 +0100
++
++funny-manpages (1.1-1) unstable; urgency=low
++
++  * Added uubp(1) which was previously in asr-manpages.
++  * Removed strfry (conflicted with libc) - this closes bugs #16785 and
++    #16840.
++
++ -- Pawel Wiecek <coven@pwr.wroc.pl>  Tue, 23 Dec 1997 00:05:14 +0100
++
++funny-manpages (1.0-1) unstable; urgency=low
++
++  * Initial Release.
++
++ -- Pawel Wiecek <coven@pwr.wroc.pl>  Wed, 10 Dec 1997 01:10:17 +0100
++
++Local variables:
++mode: debian-changelog
++End:
+--- funny-manpages-1.1.orig/debian/control
++++ funny-manpages-1.1/debian/control
+@@ -0,0 +1,15 @@
++Source: funny-manpages
++Section: doc
++Priority: optional
++Maintainer: Pawel Wiecek <coven@debian.org>
++Standards-Version: 3.0.1
++
++Package: funny-manpages
++Architecture: all
++Suggests: asr-manpages (>=1.2-3)
++Description: more funny manpages
++ A set of non-a.s.r humorous manpages (don't take them
++ too seriously!).
++ Includes, amongst others, rtfm (1).
++ Warning! Some of these manpages might be treated offensive.
++ You've been warned.
+--- funny-manpages-1.1.orig/debian/copyright
++++ funny-manpages-1.1/debian/copyright
+@@ -0,0 +1,25 @@
++This package was debianized by Pawel Wiecek coven@pwr.wroc.pl on
++Wed, 10 Dec 1997 01:10:17 +0100.
++
++This set of manpages was collected from all over the net. No specific
++location can be given.
++
++Copyright:
++
++To the best of my knowledge all of these manpages are free to use.
++
++The authors are:
++
++baby.1		- unknown, based on man page by Joe Beck <beck@cs.ualberta.ca>
++celibacy.1	- unknown
++condom.1	- Ken Maupin <maupin@cs.washington.edu>
++flame.1		- unknown
++flog.1		- unknown
++gong.1		- unknown
++grope.1		- unknown
++party.1		- unknown
++rescrog.1	- unknown
++rtfm.1		- unknown
++sex.1		- unknown
++tm.1		- unknown
++xlart.1		- James McPherson
+--- funny-manpages-1.1.orig/debian/rules
++++ funny-manpages-1.1/debian/rules
+@@ -0,0 +1,56 @@
++#!/usr/bin/make -f
++# Sample debian.rules file - for GNU Hello (1.3).
++# Copyright 1994,1995 by Ian Jackson.
++# I hereby give you perpetual unlimited permission to copy,
++# modify and relicense this file, provided that you do not remove
++# my name from the file itself.  (I assert my moral right of
++# paternity under the Copyright, Designs and Patents Act 1988.)
++# This file may have to be extensively modified
++#
++# Modified to be a prototype for debmake by Christoph Lameter <clameter@debian.org>
++
++package=funny-manpages
++
++build:
++	$(checkdir)
++	touch build
++
++clean:
++	$(checkdir)
++	-rm -f build
++	-rm `find . -name "*~"`
++	-rm -rf debian/tmp debian/files* core
++
++binary-indep:	checkroot build
++	$(checkdir)
++	-rm -rf debian/tmp
++# Must have debmake installed for this to work. Otherwise please copy
++# /usr/bin/debstd into the debian directory and change debstd to debian/debstd
++	debstd $(package) CHANGES INSTALL README* TODO
++	dpkg-gencontrol
++	chown -R root.root debian/tmp
++	chmod -R go=rX debian/tmp
++	dpkg --build debian/tmp ..
++
++binary-arch:	checkroot build
++	$(checkdir)
++# There are no architecture-dependent files to be uploaded
++# generated by this package.  If there were any they would be
++# made here.
++
++define checkdir
++	test -f debian/rules
++endef
++
++# Below here is fairly generic really
++
++binary:		binary-indep binary-arch
++
++source diff:
++	@echo >&2 'source and diff are obsolete - use dpkg-source -b'; false
++
++checkroot:
++	$(checkdir)
++	test root = "`whoami`"
++
++.PHONY: binary binary-arch binary-indep clean checkroot
+--- funny-manpages-1.1.orig/sex.6
++++ funny-manpages-1.1/sex.6
+@@ -0,0 +1,131 @@
++.TH SEX 6 \& \& "EUNUCH Programmer's Manual"
++.SH NAME
++sex \(em have sex
++.SH SYNOPSIS
++.B sex
++.RI [ options "] ...
++.RI [ username "] ...
++.SH DESCRIPTION
++.I sex
++allows the invoker to have sex with the user(s)
++specified in the command line.
++If no users are specified,
++they are taken from the LOVERS environment variable.
++Options to make things more interesting are as follows:
++.TP
++.B \-1
++masturbate
++.TP
++.B \-a
++external stimulus (aphrodisiac) option
++.TP
++.B \-b
++buggery
++.TP
++.BI \-B " animal
++bestiality with
++.I animal
++.TP
++.B \-c
++chocolate sauce option
++.TP
++.B \-C
++chaining option (cuffs included) (see also
++.B \-m
++.B \-s
++.BR \-W )
++.TP
++.BI \-d " file
++get a date with the features described in
++.I file
++.TP
++.B \-e
++exhibitionism (image sent to all machines on the net)
++.TP
++.B \-f
++foreplay option
++.TP
++.B \-F
++nasal sex with plants
++.TP
++.B \-i
++coitus interruptus (messy!)
++.TP
++.B \-j
++jacuzzi option (California sites only)
++.TP
++.B \-l
++leather option
++.TP
++.B \-m
++masochism (see
++.BR \-s )
++.TP
++.B \-M
++triple parallel (Menage a Trois) option
++.TP
++.B \-n
++necrophilia (if target process is not dead, program kills it)
++.TP
++.B \-o
++oral option
++.TP
++.B \-O
++parallel access (orgy)
++.TP
++.B \-p
++debug option (proposition only)
++.TP
++.B \-P
++pedophilia (must specify a child process)
++.TP
++.B \-q
++quickie (wham, bam, thank you, ma'am)
++.TP
++.B \-s
++sadism (target must set
++.BR \-m )
++.TP
++.B \-S
++sundae option
++.TP
++.B \-v
++voyeurism (surveys the entire net)
++.TP
++.B \-w
++whipped cream option
++.TP
++.B \-W
++whips (see also
++.BR \-s ,
++.BR \-C ,
++and
++.BR \-m )
++.SH ENVIRONMENT
++.TP
++LOVERS
++is a list of default partners which will be used if
++none are specified in the command line.
++If any are specified, the values in LOVERS is ignored.
++.SH FILES
++.TP
++.I /usr/share/sex/animals
++animals for bestiality
++.TP
++.I /usr/share/sex/blackbook
++possible dates
++.TP
++.I /usr/share/sex/sundaes
++sundae recipes
++.TP
++.I /usr/share/sex/s&m
++sado-masochistic equipment
++.SH BUGS
++.TP
++^C
++(quit process) may leave the user very unsatisfied.
++.TP
++^Z
++(stop process) is usually quite messy.
++.SH HISTORY
++Oldest program ever.

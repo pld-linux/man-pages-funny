@@ -2,7 +2,7 @@ Summary:	alt.sysadmin.recovery(and others) manual pages
 Summary(pl):	Strony man z grupy alt.sysadmin.recovery(i nie tylko)
 Name:		man-pages-funny
 Version:	1.1
-Release:	4
+Release:	5
 License:	distributable
 Group:		Documentation
 Source0:	funny-manpages_%{version}.orig.tar.gz
@@ -13,8 +13,7 @@ Source2:	%{name}-google-en.7
 Source3:	%{name}-google-pl.7
 Patch0:		funny-manpages-DEBIAN.patch
 Patch1:		asr-manpages-DEBIAN.patch
-# man-pages collision: barcode.1, flame.1
-Conflicts:	xscreensaver
+Conflicts:	xscreensaver <= 1:4.16-2
 Obsoletes:	funny-manpages
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

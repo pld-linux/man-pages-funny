@@ -13,9 +13,11 @@ Source2:	%{name}-google-en.7
 Source3:	%{name}-google-pl.7
 Patch0:		funny-manpages-DEBIAN.patch
 Patch1:		asr-manpages-DEBIAN.patch
+# man-pages collision: barcode.1, flame.1
+Conflicts:	xscreensaver
+Obsoletes:	funny-manpages
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Obsoletes:	funny-manpages
 
 %description
 A set of humorous manual pages developed on alt.sysadmin.recovery

@@ -2,7 +2,7 @@ Summary:	alt.sysadmin.recovery(and others) manual pages
 Summary(pl):	Strony man z grupy alt.sysadmin.recovery(i nie tylko)
 Name:		man-pages-funny
 Version:	1.1
-Release:	2
+Release:	3
 License:	distributable
 Group:		Documentation
 Source0:	funny-manpages_%{version}.orig.tar.gz

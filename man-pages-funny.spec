@@ -5,9 +5,6 @@ Version:	1.1
 Release:	1
 License:	distributable
 Group:		Documentation
-Group(de):	Dokumentation
-Group(es):	Documentación
-Group(pl):	Dokumentacja
 Source0:	funny-manpages_%{version}.orig.tar.gz
 Source1:	ftp://ftp.winternet.com/users/asr.pages.tar
 Patch0:		funny-manpages-DEBIAN.patch

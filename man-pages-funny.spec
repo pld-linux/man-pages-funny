@@ -14,6 +14,7 @@ Patch0:		funny-manpages-DEBIAN.patch
 Patch1:		asr-manpages-DEBIAN.patch
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	funny-manpages
 
 %description
 A set of humorous manual pages developed on alt.sysadmin.recovery
@@ -38,8 +39,6 @@ dystrybucji Debian.
 %setup -q -n funny-manpages-%{version}.orig -a 1
 %patch0 -p1
 %patch1 -p1
-
-%build
 
 %install
 rm -rf $RPM_BUILD_ROOT

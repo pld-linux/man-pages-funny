@@ -1,5 +1,5 @@
 Summary:	alt.sysadmin.recovery(and others) manual pages
-Summary(pl):	Strony man z grupy alt.sysadmin.recovery(i nie tylko)
+Summary(pl.UTF-8):   Strony man z grupy alt.sysadmin.recovery(i nie tylko)
 Name:		man-pages-funny
 Version:	1.1
 Release:	5
@@ -27,14 +27,14 @@ sysadmin, luser, bosskill and others. The authors recommend these man
 pages should be installed on every system. There are also other funny
 manpages collected by Pawel Wiecek for Debian distribution.
 
-%description -l pl
+%description -l pl.UTF-8
 Zestaw humorystycznych stron manuala stworzonych na grupie
-alt.sysadmin.recovery (nie traktuj jej powa¿nie!). Udokumentowano
-zestaw bardzo u¿ytecznych narzêdzi niezamieszczonych z jaki¶ wa¿nych
-powodów w standardowych wersjach Unix-a. S± tutaj zawarte takie
-komendy jak lart, sysadmin, luser, bosskill i inne. Autorzy zalecaj±
-instalacjê tych manuali na ka¿dym systemie. Jest tutaj tak¿e kilka
-innych zabawnych stron manuala zebranych przez Paw³a Wiêcka dla
+alt.sysadmin.recovery (nie traktuj jej powaÅ¼nie!). Udokumentowano
+zestaw bardzo uÅ¼ytecznych narzÄ™dzi niezamieszczonych z jakiÅ› waÅ¼nych
+powodÃ³w w standardowych wersjach Unix-a. SÄ… tutaj zawarte takie
+komendy jak lart, sysadmin, luser, bosskill i inne. Autorzy zalecajÄ…
+instalacjÄ™ tych manuali na kaÅ¼dym systemie. Jest tutaj takÅ¼e kilka
+innych zabawnych stron manuala zebranych przez PawÅ‚a WiÄ™cka dla
 dystrybucji Debian.
 
 %prep

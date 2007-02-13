@@ -1,5 +1,5 @@
 Summary:	alt.sysadmin.recovery(and others) manual pages
-Summary(pl.UTF-8):   Strony man z grupy alt.sysadmin.recovery(i nie tylko)
+Summary(pl.UTF-8):	Strony man z grupy alt.sysadmin.recovery(i nie tylko)
 Name:		man-pages-funny
 Version:	1.1
 Release:	5
